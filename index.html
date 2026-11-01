@@ -5,367 +5,184 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HYD SELF DRIVE CARS</title>
-
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;background:#071426;color:white;
- font-family:Arial,sans-serif;
-}
-header{
- background:#061326;padding:18px;
- display:flex;justify-content:space-between;
- align-items:center;position:sticky;top:0;z-index:10;
-}
-.logo{font-size:19px;font-weight:900}
-.logo span{color:#ff8a24}
-nav a{color:white;text-decoration:none;margin:7px}
-.hero{
- min-height:370px;padding:55px 25px;
- display:flex;align-items:center;
- background-size:cover;background-position:center;
- animation:banner 18s infinite;
-}
-@keyframes banner{
- 0%,30%{background-image:linear-gradient(90deg,#061326dd,#06132655),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1400')}
- 33%,63%{background-image:linear-gradient(90deg,#061326dd,#06132655),url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1400')}
- 66%,96%{background-image:linear-gradient(90deg,#061326dd,#06132655),url('https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1400')}
- 100%{background-image:linear-gradient(90deg,#061326dd,#06132655),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1400')}
-}
-.hero h1{font-size:42px}
-.hero p{line-height:1.7}
-.section{padding:30px 18px;max-width:1100px;margin:auto}
-h2{font-size:27px}
-.cars{
- display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:16px;
-}
-.card,.panel{
- background:#10233b;border:1px solid #30445c;
- border-radius:14px;overflow:hidden;
-}
-.card img{width:100%;height:165px;object-fit:cover}
-.cardbody{padding:15px}
-.price{color:#ff9a35;font-weight:bold;font-size:19px}
-label{display:block;margin:13px 0 6px}
-input,select{
- width:100%;padding:13px;border-radius:8px;
- border:1px solid #52657c;background:#071426;color:white;
- font-size:16px;
-}
-.panel{padding:20px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-button,.btn{
- background:#ff8a24;color:#111;border:0;
- border-radius:9px;padding:14px 20px;
- font-weight:bold;font-size:16px;
- cursor:pointer;text-decoration:none;display:inline-block;
-}
-.result{line-height:2;margin:18px 0}
-.notice{
- background:#1b2b40;padding:14px;border-left:4px solid #ff8a24;
- border-radius:8px;line-height:1.6;font-size:13px;
-}
-.wa{
- position:fixed;right:17px;bottom:17px;
- background:#20c76a;color:white;padding:15px 19px;
- border-radius:40px;text-decoration:none;font-weight:bold;
- z-index:20;
-}
-footer{text-align:center;padding:25px;color:#aebed0}
-@media(max-width:600px){
- .grid{grid-template-columns:1fr}
- .hero h1{font-size:32px}
- nav a{font-size:12px;margin:3px}
-}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{background:#08234d;color:white;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}
+.logo{font-size:21px;font-weight:900}
+.logo span{color:#ffbd45}
+nav a{color:white;text-decoration:none;margin-left:15px;font-weight:bold}
+.hero{background:linear-gradient(110deg,#061a38dd,#075be8bb),url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1500&q=85') center/cover;color:white;padding:65px 6%;text-align:center}
+.hero h1{font-size:36px;margin:0 0 12px}
+.hero p{font-size:17px}
+.container{max-width:1150px;margin:28px auto;padding:0 15px}
+h2{color:#08234d}
+.cars{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px}
+.car{background:white;border-radius:14px;overflow:hidden;box-shadow:0 4px 15px #00000012}
+.car img{width:100%;height:175px;object-fit:cover;background:#e5eaf2}
+.car-info{padding:15px}
+.car h3{margin:0 0 8px}
+.price{font-size:21px;color:#075be8;font-weight:bold}
+.area{color:#687386;font-size:14px;margin:8px 0}
+.car button,.book button,.wa{border:0;background:#075be8;color:white;padding:12px 16px;border-radius:8px;font-weight:bold;cursor:pointer}
+.car button{width:100%;margin-top:8px}
+.booking{background:white;padding:22px;border-radius:14px;box-shadow:0 4px 15px #00000012}
+input,select{width:100%;padding:13px;margin:7px 0 14px;border:1px solid #ccd4e0;border-radius:8px;font-size:15px}
+label{font-weight:bold}
+.total{font-size:23px;color:#075be8;font-weight:bold;margin:12px 0}
+.book button{width:100%;font-size:17px;background:#07853b}
+.note{font-size:13px;color:#687386;line-height:1.5}
+footer{background:#08234d;color:white;text-align:center;padding:25px;margin-top:35px}
+.wa{display:inline-block;text-decoration:none;background:#159b50;margin-top:10px}
+@media(max-width:600px){header{padding:15px;flex-wrap:wrap;gap:10px}nav a{margin-left:8px;font-size:13px}.hero h1{font-size:28px}}
 </style>
 </head>
-
 <body>
 
 <header>
- <div class="logo">HYD <span>SELF DRIVE CARS</span></div>
- <nav>
-  <a href="#cars">Cars</a>
-  <a href="#booking">Book Now</a>
- </nav>
+  <div class="logo">HYD <span>SELF DRIVE</span> CARS</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#cars">Cars</a>
+    <a href="#booking">Book Now</a>
+    <a href="#contact">Contact</a>
+  </nav>
 </header>
 
-<section class="hero">
- <div>
-  <h1>Drive Your Journey.<br>Choose Your Car.</h1>
-  <p>Self Drive Car Rentals in Hyderabad</p>
-  <a class="btn" href="#cars">Explore Cars</a>
- </div>
+<section class="hero" id="home">
+  <h1>Drive Your Journey</h1>
+  <p>Self Drive Cars Rental in Hyderabad</p>
+  <a href="#cars" class="wa">Explore Cars</a>
 </section>
 
-<section class="section" id="cars">
- <h2>Our Available Cars</h2>
- <div class="cars" id="carList"></div>
-</section>
+<main class="container">
+  <h2 id="cars">Available Cars</h2>
+  <div class="cars" id="carList"></div>
 
-<section class="section" id="booking">
- <div class="panel">
-  <h2>Book Your Car</h2>
+  <section class="container" id="booking">
+    <h2>Book Your Car</h2>
+    <div class="booking">
+      <label>Select Car</label>
+      <select id="carSelect" onchange="calculate()"></select>
 
-  <form id="bookingForm">
-   <div class="grid">
-    <div>
-     <label>Select Car</label>
-     <select id="carSelect" required></select>
+      <label>Pickup Date</label>
+      <input type="date" id="pickup" onchange="calculate()">
 
-     <label>Your Name</label>
-     <input id="customerName" required>
+      <label>Return Date</label>
+      <input type="date" id="dropoff" onchange="calculate()">
 
-     <label>Mobile Number</label>
-     <input id="phone" type="tel" pattern="[0-9]{10}" required>
+      <label>Your Name</label>
+      <input id="customerName" placeholder="Enter your name">
+
+      <label>Mobile Number</label>
+      <input id="mobile" type="tel" placeholder="Enter mobile number">
+
+      <label>Pickup Area / Address</label>
+      <input id="address" placeholder="Enter pickup area and address">
+
+      <div class="total">Total: ₹<span id="total">0</span></div>
+      <p class="note">The displayed amount is calculated using the selected car's daily rate and rental days. On Cashfree, enter the same full amount manually. Payment is not automatically verified by this website.</p>
+
+      <div class="book">
+        <button onclick="payNow()">BOOK NOW – PAY FULL AMOUNT</button>
+      </div>
+      <a class="wa" id="whatsapp" href="https://wa.me/919912386712" target="_blank">Send Booking Details on WhatsApp</a>
     </div>
+  </section>
+</main>
 
-    <div>
-     <label>Pickup Date</label>
-     <input type="date" id="pickup" required>
-
-     <label>Return Date</label>
-     <input type="date" id="drop" required>
-
-     <label>Email (Optional)</label>
-     <input type="email" id="email">
-    </div>
-   </div>
-
-   <div class="result" id="result">
-    Select car and dates to calculate total.
-   </div>
-
-   <button type="submit">Book Now</button>
-  </form>
-
-  <div id="message"></div>
- </div>
-</section>
-
-<section class="section">
- <div class="notice">
-  Payment: Website calculates the full rental amount.
-  After clicking Book Now, Cashfree Payment Form opens.
-  Customer must manually enter the displayed full amount.
-  Payment must be checked in Cashfree Dashboard before confirming booking.
- </div>
-</section>
-
-<footer>
- © 2026 HYD SELF DRIVE CARS · Hyderabad
+<footer id="contact">
+  <h3>HYD SELF DRIVE CARS</h3>
+  <p>Hyderabad, Telangana</p>
+  <p>WhatsApp: +91 99123 86712</p>
+  <a class="wa" href="https://wa.me/919912386712" target="_blank">Contact on WhatsApp</a>
 </footer>
 
-<a class="wa"
- href="https://wa.me/919912386712"
- target="_blank">
- WhatsApp Chat
-</a>
-
 <script>
+// EDIT YOUR CAR NAME, DAILY RATE, AREA AND PHOTO URL HERE
+const CASHFREE_LINK = "https://cfpe.me/enterorgind";
 
-/* ==================================
-   OWNER CAR DETAILS
-   CHANGE CAR NAME, PRICE, PHOTO,
-   ADDRESS AND AREA IN THIS SECTION
-================================== */
-
-const CARS = [
-
- {
-  id:1,
-  name:"Maruti Swift",
-  price:860,
-  area:"Kukatpally",
-  address:"Kukatpally, Hyderabad",
-  photo:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=700",
-  available:true
- },
-
- {
-  id:2,
-  name:"Hyundai Sedan",
-  price:1200,
-  area:"Miyapur",
-  address:"Miyapur, Hyderabad",
-  photo:"https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=700",
-  available:true
- },
-
- {
-  id:3,
-  name:"SUV",
-  price:1800,
-  area:"Gachibowli",
-  address:"Gachibowli, Hyderabad",
-  photo:"https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=700",
-  available:true
- }
-
+const cars = [
+ {name:"Maruti Suzuki Swift",rate:860,area:"Hyderabad",photo:"https://img.autocarpro.in/autocarpro/da192c31-d106-459c-b745-efdd39c428fe_web-marutisuzukiswiftlusterbluewithmidnightblackroof_53706049637_o.jpg"},
+ {name:"Maruti Suzuki Swift Dzire",rate:860,area:"Hyderabad",photo:"https://cdni.autocarindia.com/ExtraImages/20200729062222_Hyundai-Creta-red.jpg"},
+ {name:"Tata Nexon",rate:860,area:"Hyderabad",photo:"https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/39015/punch-exterior-right-front-three-quarter-54.jpeg?isig=0&q=80"},
+ {name:"Hyundai Creta",rate:860,area:"Hyderabad",photo:"https://cdni.autocarindia.com/ExtraImages/20200729062222_Hyundai-Creta-red.jpg"},
+ {name:"Maruti Ertiga 7 Seater",rate:860,area:"Hyderabad",photo:"https://cdn-s3.autocarindia.com/legacy/cdni/ExtraImages/20220415113510_Ertiga_FL.jpg?q=75&w=728"},
+ {name:"S Cross Top",rate:860,area:"Hyderabad",photo:"https://stimg.cardekho.com/images/car-images/930x620/Maruti/S-Cross/"},
+ {name:"Mahindra Scorpio N",rate:860,area:"Hyderabad",photo:"https://stimg.cardekho.com/images/car-images/930x620/Mahindra/Scorpio-N/13746/1785924987591/DEEP-FOREST_2e322a.jpg?tr=w-898"},
+ {name:"Kia Seltos",rate:860,area:"Hyderabad",photo:"https://www.kia.com/content/dam/kia2/in/en/our-vehicles/showroom/seltos-anthem/campaign_pr_desktop.jpg"},
+ {name:"Maruti Wagon R",rate:860,area:"Hyderabad",photo:"https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/112947/wagon-r-2022-exterior-right-front-three-quarter-2.jpeg?isig=0&q=75"},
+ {name:"Tata Punch",rate:860,area:"Hyderabad",photo:"https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/39015/punch-exterior-right-front-three-quarter-54.jpeg?isig=0&q=80"},
+ {name:"Mahindra XUV 500",rate:860,area:"Hyderabad",photo:"https://stimg.cardekho.com/images/carexteriorimages/930x620/Mahindra/XUV500/"},
+ {name:"Toyota Fortuner",rate:860,area:"Hyderabad",photo:"https://toyotasubic.com.ph/wp-content/uploads/slider36/attitude-black-mica-e1658816632249.png"}
 ];
 
-/* CASHFREE PAYMENT LINK */
+const carList=document.getElementById("carList");
+const carSelect=document.getElementById("carSelect");
 
-const CASHFREE_LINK =
-"https://cfpe.me/enterorgind";
-
-/* WHATSAPP NUMBER */
-
-const WHATSAPP =
-"919912386712";
-
-const carList =
-document.getElementById("carList");
-
-const carSelect =
-document.getElementById("carSelect");
-
-function money(amount){
- return "₹"+Number(amount).toLocaleString("en-IN");
-}
-
-function loadCars(){
-
- carList.innerHTML="";
- carSelect.innerHTML="";
-
- CARS.filter(car=>car.available).forEach(car=>{
-
-  const option=document.createElement("option");
-  option.value=car.id;
-  option.textContent=car.name+" - "+money(car.price)+"/day";
-  carSelect.appendChild(option);
-
-  const card=document.createElement("div");
-  card.className="card";
-
-  card.innerHTML=`
-   <img src="${car.photo}" alt="${car.name}">
-   <div class="cardbody">
-    <h3>${car.name}</h3>
-    <div class="price">${money(car.price)} / Day</div>
-    <p>${car.area}</p>
-    <p>${car.address}</p>
-   </div>
-  `;
-
-  carList.appendChild(card);
-
- });
-
-}
-
-loadCars();
-
-const pickup=document.getElementById("pickup");
-const drop=document.getElementById("drop");
-const result=document.getElementById("result");
-
-const today=new Date();
-const todayString=new Date(
- today.getTime()-today.getTimezoneOffset()*60000
-).toISOString().slice(0,10);
-
-pickup.min=todayString;
-drop.min=todayString;
-
-function calculate(){
-
- const car=CARS.find(
-  c=>String(c.id)===carSelect.value
- );
-
- if(!car || !pickup.value || !drop.value){
-  result.textContent="Select car and dates.";
-  return null;
- }
-
- const start=new Date(pickup.value+"T00:00:00");
- const end=new Date(drop.value+"T00:00:00");
-
- const days=Math.ceil(
-  (end-start)/86400000
- );
-
- if(days<1){
-  result.textContent="Return date must be after pickup date.";
-  return null;
- }
-
- const total=days*car.price;
-
- result.innerHTML=`
-  Car: <b>${car.name}</b><br>
-  Pickup Area: <b>${car.area}</b><br>
-  Pickup Address: <b>${car.address}</b><br>
-  Rental Days: <b>${days}</b><br>
-  Daily Rate: <b>${money(car.price)}</b><br>
-  <span class="price">
-   TOTAL AMOUNT PAYABLE: ${money(total)}
-  </span>
- `;
-
- return {car,days,total};
-
-}
-
-carSelect.addEventListener("change",calculate);
-pickup.addEventListener("change",calculate);
-drop.addEventListener("change",calculate);
-
-document.getElementById("bookingForm")
-.addEventListener("submit",function(e){
-
- e.preventDefault();
-
- const booking=calculate();
-
- if(!booking)return;
-
- const name=
- document.getElementById("customerName").value;
-
- const phone=
- document.getElementById("phone").value;
-
- const email=
- document.getElementById("email").value;
-
- const total=booking.total;
-
- const message=
- `Booking Enquiry
- Car: ${booking.car.name}
- Area: ${booking.car.area}
- Address: ${booking.car.address}
- Pickup: ${pickup.value}
- Return: ${drop.value}
- Days: ${booking.days}
- Total Payable: Rs.${total}
- Name: ${name}
- Phone: ${phone}
- Email: ${email}`;
-
- document.getElementById("message").innerHTML=`
-  <p><b>Full Amount Payable: ${money(total)}</b></p>
-  <p>Cashfreeలో Amount దగ్గర ${total} నమోదు చేసి చెల్లించండి.</p>
-  <a class="btn"
-   href="${CASHFREE_LINK}"
-   target="_blank">
-   Open Cashfree Payment
-  </a>
-  <br><br>
-  <a class="btn"
-   href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}"
-   target="_blank">
-   Send Booking Details on WhatsApp
-  </a>
- `;
-
+cars.forEach((car,i)=>{
+  carList.innerHTML+=`
+  <div class="car">
+    <img src="${car.photo}" alt="${car.name}" onerror="this.style.display='none'">
+    <div class="car-info">
+      <h3>${car.name}</h3>
+      <div class="price">₹${car.rate} / day</div>
+      <div class="area">📍 ${car.area}</div>
+      <button onclick="chooseCar(${i})">Select This Car</button>
+    </div>
+  </div>`;
+  carSelect.innerHTML+=`<option value="${i}">${car.name}</option>`;
 });
 
-</script>
+function chooseCar(i){
+  carSelect.value=i;
+  calculate();
+  document.getElementById("booking").scrollIntoView({behavior:"smooth"});
+}
 
+function calculate(){
+  const start=document.getElementById("pickup").value;
+  const end=document.getElementById("dropoff").value;
+  const car=cars[Number(carSelect.value)];
+  let days=0;
+  if(start && end){
+    const a=new Date(start+"T00:00:00");
+    const b=new Date(end+"T00:00:00");
+    days=Math.ceil((b-a)/86400000);
+    if(days<1) days=0;
+  }
+  const amount=days*car.rate;
+  document.getElementById("total").textContent=amount.toLocaleString("en-IN");
+  return {days,amount,car};
+}
+
+function payNow(){
+  const name=document.getElementById("customerName").value.trim();
+  const mobile=document.getElementById("mobile").value.trim();
+  const address=document.getElementById("address").value.trim();
+  const data=calculate();
+
+  if(!name || !mobile || !address || !data.days){
+    alert("Please enter your name, mobile number, pickup address and valid pickup/return dates.");
+    return;
+  }
+  if(!/^[0-9]{10}$/.test(mobile)){
+    alert("Please enter a valid 10-digit mobile number.");
+    return;
+  }
+  if(data.amount<=0){
+    alert("Please check the rental dates.");
+    return;
+  }
+
+  const message=`Booking enquiry\nName: ${name}\nMobile: ${mobile}\nCar: ${data.car.name}\nPickup: ${document.getElementById("pickup").value}\nReturn: ${document.getElementById("dropoff").value}\nDays: ${data.days}\nPickup address: ${address}\nTotal rental amount: Rs.${data.amount}`;
+
+  document.getElementById("whatsapp").href=
+    "https://wa.me/919912386712?text="+encodeURIComponent(message);
+
+  alert("Cashfree payment page will open. Enter the full amount ₹"+data.amount+" manually there. Send your booking details on WhatsApp as well.");
+  window.open(CASHFREE_LINK,"_blank");
+}
+</script>
 </body>
 </html>
